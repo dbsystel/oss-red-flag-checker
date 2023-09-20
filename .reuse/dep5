@@ -1,0 +1,8 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: Open Source Red Flag Checker
+Upstream-Contact: Max Mehl <max.mehl@deutschebahn.com>
+Source: https://github.com/dbsystel/oss-red-flag-checker
+
+Files: tests/resources/*
+Copyright: 2023 DB Systel GmbH
+License: Apache-2.0

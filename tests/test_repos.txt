@@ -1,0 +1,26 @@
+# A test file with "interesting" repos that trigger some of these checks
+
+# CLA in file and PR status
+https://github.com/hashicorp/vagrant
+# no issues and not on github
+https://git.fsfe.org/reuse/api
+# CLA in PR action
+https://github.com/ant-design-blazor/ant-design-blazor
+# No issues
+https://github.com/fsfe/reuse-website
+# CLA in file
+https://github.com/neo4j/neo4j
+# inbound=outbound
+https://github.com/bcpierce00/unison
+# COPYING.md file
+https://github.com/matteocorti/check_ssl_cert
+# No License
+https://github.com/amazon-archives/aws-flow-ruby
+# LICENSES directory
+https://github.com/fsfe/reuse-tool
+# DCO in PR and file
+https://github.com/opensearch-project/helm-charts
+# Quite healthy project
+https://github.com/curl/curl
+# A project with predominating contributor and lots of bot commits
+https://github.com/dbsystel/trivy-vulnerability-explorer/

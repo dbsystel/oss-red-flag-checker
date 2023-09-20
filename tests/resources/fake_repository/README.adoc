@@ -1,0 +1,3 @@
+# Project Name
+
+This project is covered under the simple inbound= outbound licensing rule.

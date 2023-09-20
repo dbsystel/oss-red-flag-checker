@@ -1,0 +1,53 @@
+# SPDX-FileCopyrightText: 2023 DB Systel GmbH
+#
+# SPDX-License-Identifier: Apache-2.0
+
+[tool.poetry]
+name = "oss-red-flag-checker"
+version = "0.1.0"
+description = "Check remote repositories for typical red flags like CLAs and risks due to low development activity"
+authors = ["Max Mehl <max.mehl@deutschebahn.com>"]
+license = "Apache-2.0"
+readme = "README.md"
+packages = [{ include = "ossrfc" }]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+pygithub = "^1.59.1"
+gitpython = "^3.1.32"
+platformdirs = "^3.10.0"
+tqdm = "^4.66.1"
+termcolor = "^2.3.0"
+
+
+[tool.poetry.group.dev.dependencies]
+isort = "^5.12.0"
+pylint = "^2.17.5"
+black = "^23.7.0"
+pylama = "^8.4.1"
+mypy = "^1.5.1"
+types-tqdm = "^4.66.0.2"
+pytest = "^7.4.2"
+pytest-cov = "^4.1.0"
+
+[tool.poetry.scripts]
+ossrfc = 'ossrfc.checker:main'
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+# FORMATTING settings
+[tool.isort]
+profile = "black"
+
+[tool.black]
+line-length = 100
+
+# MYPY settings
+[tool.mypy]
+files = ["ossrfc/*.py"]
+
+# PYTEST settings
+[tool.pytest.ini_options]
+addopts = "--cov=ossrfc"
