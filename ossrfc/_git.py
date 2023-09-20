@@ -15,7 +15,7 @@ from time import sleep
 from typing import Optional
 
 from git import GitCommandError, Repo
-from github import Github, RateLimitExceededException, BadCredentialsException
+from github import BadCredentialsException, Github, RateLimitExceededException
 from platformdirs import user_cache_path
 
 
