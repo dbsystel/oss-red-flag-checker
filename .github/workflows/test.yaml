@@ -1,0 +1,77 @@
+# SPDX-FileCopyrightText: 2023 DB Systel GmbH
+#
+# SPDX-License-Identifier: Apache-2.0
+
+name: Test suites
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  installtest:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      max-parallel: 10
+      # do not abort the whole test job if one combination in the matrix fails
+      fail-fast: false
+      matrix:
+        python-version: ["3.9", "3.10", "3.11"]
+        os: [ubuntu-20.04]
+        include:
+          - python-version: "3.9"
+            os: macos-latest
+          - python-version: "3.9"
+            os: windows-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions/poetrybuild
+        with:
+          python: ${{ matrix.python-version }}
+
+  pytest:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions/poetrybuild
+      - name: Test with pytest
+        run: |
+          poetry run pytest
+
+  pylint:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions/poetrybuild
+      - name: Lint with pylint
+        run: |
+          poetry run pylint ossrfc/ tests/
+
+  formatting:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions/poetrybuild
+      - name: Test formatting with isort and black
+        run: |
+          poetry run isort --check ossrfc/
+          poetry run black .
+
+  mypy:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions/poetrybuild
+      - name: Test typing with mypy
+        run: |
+          poetry run mypy
+
+  reuse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Check REUSE Compliance
+        uses: fsfe/reuse-action@v2

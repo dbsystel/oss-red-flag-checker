@@ -6,6 +6,7 @@ SPDX-License-Identifier: Apache-2.0
 
 # Open Source Red Flag Checker
 
+[![Test suites](https://github.com/dbsystel/oss-red-flag-checker/actions/workflows/test.yaml/badge.svg)](https://github.com/dbsystel/oss-red-flag-checker/actions/workflows/test.yaml)
 [![REUSE status](https://api.reuse.software/badge/github.com/dbsystel/oss-red-flag-checker)](https://api.reuse.software/info/github.com/dbsystel/oss-red-flag-checker)
 
 This projects evaluates remote repositories by looking for typical red flags like CLAs (Contributor Licensing Agreements) but also indicators for governance, activity or licensing conditions we consider as good.

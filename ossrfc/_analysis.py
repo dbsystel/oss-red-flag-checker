@@ -213,8 +213,7 @@ def _evaluate_commit_date(report: RepoReport) -> None:
                 "ignored": "commit-age" in report.ignorelist_,
                 "severity": "yellow",
                 "indicator": (
-                    "The last commit made by a human is more than 90 days old "
-                    f"({hcom} days)"
+                    "The last commit made by a human is more than 90 days old " f"({hcom} days)"
                 ),
             }
         )
@@ -227,8 +226,7 @@ def _evaluate_commit_date(report: RepoReport) -> None:
                 "ignored": "commit-age" in report.ignorelist_,
                 "severity": "green",
                 "indicator": (
-                    "The last commit made by a human is less than 90 days old "
-                    f"({hcom} days)"
+                    "The last commit made by a human is less than 90 days old " f"({hcom} days)"
                 ),
             }
         )
