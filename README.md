@@ -23,7 +23,7 @@ This projects evaluates remote repositories by looking for typical red flags lik
 
 ## Features
 
-[![asciicast](https://asciinema.org/a/P4TUlp1f2esZZXrGDWBHyZk3n.svg)](https://asciinema.org/a/P4TUlp1f2esZZXrGDWBHyZk3n)
+[![asciicast](https://asciinema.org/a/TTgMvR8kyzusNCUL7VKlCzIaT.svg)](https://asciinema.org/a/TTgMvR8kyzusNCUL7VKlCzIaT)
 
 ### Searched data
 
@@ -62,32 +62,41 @@ Green flags:
 
 ## Installation
 
-We recommend to run this tool via `poetry` that takes care of installing the correct dependencies in a clean environment.
+You must have the following dependencies installed:
 
+* `git` >= 1.7.0
 * `python` >= 3.8
-* `poetry` >= 1.1.0
+* `pip3`
 
-Inside of the repository, run `poetry install` once and you are ready to go. If you update the repository, run this command again to fetch new versions and dependencies.
+You can install the latest release using pip: `pip3 install oss-red-flag-checker`.
+
+The command to run the program afterwards will be `ossrfc`.
+
+### Install/develop using poetry
+
+You can also run this tool via `poetry` that takes care of installing the correct dependencies in a clean environment. This also makes development very easy. We recommend to have at least poetry 1.1.0. Inside of the repository, run `poetry install` once and you are ready to go. If you update the repository, run this command again to fetch new versions and dependencies.
+
+The command to run the programm will be `poetry run ossrfc`.
 
 ## Usage
 
-You can find all supported flags by running `poetry run ossrfc --help`.
+You can find all supported flags by running `ossrfc --help`.
 
 Basic examples:
 
 ```sh
 # Check a remote repository
-poetry run ossrfc -r https://github.com/hashicorp/terraform
+ossrfc -r https://github.com/hashicorp/terraform
 # Cache the cloned repository so subsequent checks are faster
-poetry run ossrfc -r https://github.com/hashicorp/terraform --cache
+ossrfc -r https://github.com/hashicorp/terraform --cache
 # Return the results as JSON
-poetry run ossrfc -r https://github.com/hashicorp/terraform --json
+ossrfc -r https://github.com/hashicorp/terraform --json
 # Do not check for CLAs and DCOs in pull requests
-poetry run ossrfc -r https://github.com/hashicorp/terraform -d cla-dco-pulls
+ossrfc -r https://github.com/hashicorp/terraform -d cla-dco-pulls
 # Ignore findings about contribution distribution
-poetry run ossrfc -r https://github.com/hashicorp/terraform -i contributions
+ossrfc -r https://github.com/hashicorp/terraform -i contributions
 # Provide a list of repositories to be checked
-poetry run ossrfc -f repos.txt
+ossrfc -f repos.txt
 ```
 
 Here's a possible output in both the Markdown view as well as in JSON:

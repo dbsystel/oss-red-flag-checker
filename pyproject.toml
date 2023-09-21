@@ -4,7 +4,7 @@
 
 [tool.poetry]
 name = "oss-red-flag-checker"
-version = "0.1.0"
+version = "0.1.1"
 description = "Check remote repositories for typical red flags like CLAs and risks due to low development activity"
 authors = ["Max Mehl <max.mehl@deutschebahn.com>"]
 license = "Apache-2.0"
