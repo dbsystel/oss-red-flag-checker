@@ -55,6 +55,15 @@ jobs:
           ossrfc --version
           ossrfc --help
 
+  # Run tool against own repository
+  selftest:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions/poetrybuild
+      - name: Check own repository in DEBUG mode
+        run: poetry run ossrfc -r https://github.com/dbsystel/oss-red-flag-checker --debug
+
   pytest:
     runs-on: ubuntu-20.04
     steps:
