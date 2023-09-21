@@ -4,11 +4,18 @@
 
 [tool.poetry]
 name = "oss-red-flag-checker"
-version = "0.1.1"
+version = "0.1.2"
 description = "Check remote repositories for typical red flags like CLAs and risks due to low development activity"
-authors = ["Max Mehl <max.mehl@deutschebahn.com>"]
+authors = ["Open Source at Deutsche Bahn <opensource@deutschebahn.com>"]
+maintainers = ["Max Mehl <max.mehl@deutschebahn.com>"]
 license = "Apache-2.0"
 readme = "README.md"
+repository = "https://github.com/dbsystel/oss-red-flag-checker/"
+keywords = ["ospo", "open-source-management", "supply-chain", "risk-analysis"]
+classifiers = [
+  "Intended Audience :: Information Technology",
+  "Topic :: Software Development",
+]
 packages = [{ include = "ossrfc" }]
 
 [tool.poetry.dependencies]
