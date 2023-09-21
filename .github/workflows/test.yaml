@@ -11,7 +11,8 @@ on:
   pull_request:
 
 jobs:
-  installtest:
+  # Test using the tool via poetry on different OSes and python versions
+  test-os-python-matrix:
     runs-on: ${{ matrix.os }}
     strategy:
       max-parallel: 10
@@ -34,6 +35,7 @@ jobs:
       - name: Execute ossrfc
         run: poetry run ossrfc --help
 
+  # Test building the package and installing it via pip3
   test-build-install:
     runs-on: ubuntu-20.04
     steps:
