@@ -13,6 +13,7 @@ import tempfile
 
 from github import Github
 
+from . import __version__
 from ._analysis import analyse_report
 from ._contributions import maintainer_dominance, old_commits
 from ._git import (
@@ -118,6 +119,9 @@ parser.add_argument(
 # Maintenance "commands"
 parser_repos.add_argument(
     "--cache-clean", action="store_true", help="Maintenance: Clean the cache directory, then exit"
+)
+parser_repos.add_argument(
+    "--version", action="store_true", help="Show the version of ossrfc, then exit"
 )
 
 
@@ -227,9 +231,12 @@ def main():
     # Set logger settings
     configure_logger(args=args)
 
-    # Execute maintenance commands if set
-    if any([args.cache_clean]):
+    # Execute maintenance commands if set, then exit
+    if args.cache_clean:
         clean_cache()
+    if args.version:
+        print("oss-red-flag-checker " + __version__)
+    if any([args.cache_clean, args.version]):
         sys.exit(0)
 
     repos = create_repo_list(args.repourl, args.repofile)
