@@ -40,8 +40,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: ./.github/actions/poetrybuild
       - name: Test with pytest
-        run: |
-          poetry run pytest
+        run: poetry run pytest
 
   pylint:
     runs-on: ubuntu-20.04
@@ -49,8 +48,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: ./.github/actions/poetrybuild
       - name: Lint with pylint
-        run: |
-          poetry run pylint ossrfc/ tests/
+        run: poetry run pylint ossrfc/ tests/
 
   formatting:
     runs-on: ubuntu-20.04
@@ -68,8 +66,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: ./.github/actions/poetrybuild
       - name: Test typing with mypy
-        run: |
-          poetry run mypy
+        run: poetry run mypy
 
   reuse:
     runs-on: ubuntu-latest
