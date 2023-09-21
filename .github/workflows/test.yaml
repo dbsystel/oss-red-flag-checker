@@ -34,6 +34,23 @@ jobs:
       - name: Execute ossrfc
         run: poetry run ossrfc --help
 
+  test-build-install:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.9"
+      - name: Install poetry
+        run: pip install poetry
+      - name: Build package
+        run: poetry build
+      - name: Install and run package
+        run: |
+          pip3 install dist/oss_red_flag_checker-*.tar.gz
+          ossrfc --help
+
   pytest:
     runs-on: ubuntu-20.04
     steps:
