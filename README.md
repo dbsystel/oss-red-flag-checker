@@ -8,6 +8,8 @@ SPDX-License-Identifier: Apache-2.0
 
 [![Test suites](https://github.com/dbsystel/oss-red-flag-checker/actions/workflows/test.yaml/badge.svg)](https://github.com/dbsystel/oss-red-flag-checker/actions/workflows/test.yaml)
 [![REUSE status](https://api.reuse.software/badge/github.com/dbsystel/oss-red-flag-checker)](https://api.reuse.software/info/github.com/dbsystel/oss-red-flag-checker)
+[![The latest version of reuse can be found on PyPI.](https://img.shields.io/pypi/v/oss-red-flag-checker.svg)](https://pypi.org/project/oss-red-flag-checker/)
+[![Information on what versions of Python reuse supports can be found on PyPI.](https://img.shields.io/pypi/pyversions/oss-red-flag-checker.svg)](https://pypi.org/project/oss-red-flag-checker/)
 
 This projects evaluates remote repositories by looking for typical red flags like CLAs (Contributor Licensing Agreements) but also indicators for governance, activity or licensing conditions we consider as good.
 
