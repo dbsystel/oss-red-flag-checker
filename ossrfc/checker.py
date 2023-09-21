@@ -8,6 +8,7 @@
 
 import argparse
 import logging
+import sys
 import tempfile
 
 from github import Github
@@ -15,6 +16,7 @@ from github import Github
 from ._analysis import analyse_report
 from ._contributions import maintainer_dominance, old_commits
 from ._git import (
+    clean_cache,
     clone_or_pull_repository,
     create_filelist,
     create_repo_list,
@@ -224,6 +226,11 @@ def main():
 
     # Set logger settings
     configure_logger(args=args)
+
+    # Execute maintenance commands if set
+    if any([args.cache_clean]):
+        clean_cache()
+        sys.exit(0)
 
     repos = create_repo_list(args.repourl, args.repofile)
 

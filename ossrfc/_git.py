@@ -67,6 +67,7 @@ def url_to_dirname(url: str) -> str:
 def clean_cache() -> None:
     """Clean the whole cache directory"""
     cache_dir = user_cache_path("oss-red-flag-checker")
+    logging.debug("Attempting to delete %s", cache_dir)
     try:
         rmtree(cache_dir)
         print("Cache cleaned")
