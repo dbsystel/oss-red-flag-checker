@@ -46,5 +46,5 @@ See commit `cc93fc8b07445e09b5b92de207632d86edc0125d` or
 * Optional: publish to `test.pypi.org` with `poetry publish -r test-pypi` and test the package: `pip install -i https://test.pypi.org/simple oss-red-flag-checker`
 * Publish to PyPI: `poetry publish` (you may have to set your credentials/API key first)
 * Create Git tag: `git tag -s vx.y.z` (use a minimal message)
-* Push to GitHub
+* Push to GitHub: `git push && git push --tags`
 * Make a release on GitHub
