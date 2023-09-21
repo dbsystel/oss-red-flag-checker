@@ -17,10 +17,13 @@ This projects evaluates remote repositories by looking for typical red flags lik
 * [Installation](#installation)
 * [Usage](#usage)
 * [Caveats](#caveats)
+* [Similar approaches](#similar-approaches)
 * [License and copyright](#license-and-copyright)
 
 
 ## Features
+
+[![asciicast](https://asciinema.org/a/P4TUlp1f2esZZXrGDWBHyZk3n.svg)](https://asciinema.org/a/P4TUlp1f2esZZXrGDWBHyZk3n)
 
 ### Searched data
 
@@ -37,9 +40,9 @@ The checker looks for the following data in remote repositories:
 
 Red flags:
 
-* CLA mentioned in README or CONTRIBUTING files
+* CLA mentioned in `README` or `CONTRIBUTING` files
 * CLA as part of pull request actions/statuses
-* No LICENSE/COPYING file in the repository
+* No `LICENSE`/`COPYING` file in the repository
 * The project only contains contributions by one person
 * The last commit is more than 1 year old
 
@@ -50,9 +53,9 @@ Yellow flags:
 * The last human commit is more than 90 days old
 
 Green flags:
-* DCO mentioned in README or CONTRIBUTING files
+* DCO mentioned in `README` or `CONTRIBUTING` files
 * DCO as part of pull request actions/statuses
-* inbound = outbound mentioned in README or CONTRIBUTING files
+* inbound = outbound mentioned in `README` or `CONTRIBUTING` files
 * The project has an acceptable contribition distribution by multiple active developers
 * The last human commit is less than 90 days old
 
@@ -187,6 +190,13 @@ You are free to use this tool. If certain criteria is not relevant for you, cons
 
 In the long run, it may be feasible to make the ratings configurable. Contributions are welcome if you are interested in it.
 
+
+## Similar approaches
+
+There are different initiatives that intend to evaluate the health or risks of Open Source projects. All of them have their particular focuses, strengths and weaknesses.
+
+* [OpenSSF](https://openssf.org/) with a focus on security and their [scorecards](https://github.com/ossf/scorecard)
+* [CHAOSS](https://chaoss.community/) with a focus on metrics about community health and metrics models
 
 ## License and copyright
 
