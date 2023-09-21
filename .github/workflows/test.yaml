@@ -48,9 +48,11 @@ jobs:
         run: pip install poetry
       - name: Build package
         run: poetry build
-      - name: Install and run package
+      - name: Install package
+        run: pip3 install dist/oss_red_flag_checker-*.tar.gz
+      - name: Run package
         run: |
-          pip3 install dist/oss_red_flag_checker-*.tar.gz
+          ossrfc --version
           ossrfc --help
 
   pytest:
