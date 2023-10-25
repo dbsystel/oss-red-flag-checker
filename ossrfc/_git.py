@@ -153,7 +153,9 @@ def gh_token(token: str) -> Optional[Github]:
         token = ""
         logging.warning(
             "No token for GitHub set. GitHub API limits for unauthorized requests "
-            "are very low so you may quickly run into waiting times."
+            "are very low so you may quickly run into waiting times. "
+            "Either use the --token argument or set the GITHUB_TOKEN environment "
+            "variable to fix this."
         )
 
     # Log in with token
