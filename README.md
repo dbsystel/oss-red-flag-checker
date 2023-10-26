@@ -84,6 +84,10 @@ The command to run the programm will be `poetry run ossrfc`.
 
 You can find all supported flags by running `ossrfc --help`.
 
+> [!NOTE]
+> It is recommended to provide a GitHub Personal Access Token to avoid low API rate limits.
+> Either use the `--token` argument or set the `GITHUB_TOKEN` environment variable.
+
 Basic examples:
 
 ```sh
