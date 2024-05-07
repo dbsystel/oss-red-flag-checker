@@ -4,7 +4,7 @@
 
 [tool.poetry]
 name = "oss-red-flag-checker"
-version = "0.1.4"
+version = "0.1.6"
 description = "Check remote repositories for typical red flags like CLAs and risks due to low development activity"
 authors = ["Open Source at Deutsche Bahn <opensource@deutschebahn.com>"]
 maintainers = ["Max Mehl <max.mehl@deutschebahn.com>"]
