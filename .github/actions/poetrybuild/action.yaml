@@ -5,7 +5,7 @@
 name: "Reusable Poetry build workflow"
 inputs:
   python:
-    default: "3.9"
+    default: "3.13"
     description: "Value for 'python-version'"
     required: false
     type: string
