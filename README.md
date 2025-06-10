@@ -13,6 +13,9 @@ SPDX-License-Identifier: Apache-2.0
 
 This projects evaluates remote repositories by looking for typical red flags like CLAs (Contributor Licensing Agreements) but also indicators for governance, activity or licensing conditions we consider as good.
 
+> [!IMPORTANT]
+> **This project should be considered as Proof of Concept. It works for searching CLA requirements, but its project health assessments are highly vague.**
+
 ## Table of contents
 
 * [Features](#features)
