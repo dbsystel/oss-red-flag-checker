@@ -19,8 +19,8 @@ jobs:
       # do not abort the whole test job if one combination in the matrix fails
       fail-fast: false
       matrix:
-        python-version: ["3.9", "3.10", "3.11"]
-        os: [ubuntu-20.04]
+        python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
+        os: [ubuntu-24.04]
         include:
           - python-version: "3.9"
             os: macos-latest
@@ -37,7 +37,7 @@ jobs:
 
   # Test building the package and installing it via pip3
   test-build-install:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python
@@ -57,7 +57,7 @@ jobs:
 
   # Run tool against own repository
   selftest:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v2
       - uses: ./.github/actions/poetrybuild
@@ -65,7 +65,7 @@ jobs:
         run: poetry run ossrfc -r https://github.com/dbsystel/oss-red-flag-checker --debug
 
   pytest:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v2
       - uses: ./.github/actions/poetrybuild
@@ -73,7 +73,7 @@ jobs:
         run: poetry run pytest
 
   pylint:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v2
       - uses: ./.github/actions/poetrybuild
@@ -81,7 +81,7 @@ jobs:
         run: poetry run pylint ossrfc/ tests/
 
   formatting:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v2
       - uses: ./.github/actions/poetrybuild
@@ -91,7 +91,7 @@ jobs:
           poetry run black .
 
   mypy:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v2
       - uses: ./.github/actions/poetrybuild
