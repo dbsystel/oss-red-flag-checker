@@ -165,7 +165,7 @@ def gh_token(token: str) -> Optional[Github]:
             # Make a test API request
             _ = gthb.get_user().login
             # Get current rate information from GitHub, especially the reset time
-            logging.debug("Current rate limit: %s", gthb.get_rate_limit().core)
+            logging.debug("Current rate limit: %s", gthb.get_rate_limit().resources.core)
         except BadCredentialsException:
             logging.error(
                 "The provided GitHub token seems to be invalid. Continuing without authentication"
@@ -197,7 +197,7 @@ def _gh_handle_ratelimit(gthb: Github, error_msg) -> None:
     )
 
     # Get current rate information from GitHub, especially the reset time
-    rate = gthb.get_rate_limit().core
+    rate = gthb.get_rate_limit().resources.core
     logging.debug("Current rate limit: %s", rate)
 
     # Sleep 5 seconds longer than API limit

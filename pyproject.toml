@@ -19,23 +19,23 @@ classifiers = [
 packages = [{ include = "ossrfc" }]
 
 [tool.poetry.dependencies]
-python = "^3.9"
-pygithub = "^2.6.1"
-gitpython = "^3.1.44"
-platformdirs = "^4.3.8"
-tqdm = "^4.67.1"
-termcolor = "^3.1.0"
+python = "^3.10"
+pygithub = "^2.8.1"
+gitpython = "^3.1.46"
+platformdirs = "^4.9.4"
+tqdm = "^4.67.3"
+termcolor = "^3.3.0"
 
 
 [tool.poetry.group.dev.dependencies]
-isort = "^6.0.1"
-pylint = "^3.3.7"
-black = "^25.1.0"
-mypy = "^1.16.0"
-types-tqdm = "^4.67.0.20250516"
-pytest = "^8.4.0"
-pytest-cov = "^6.1.1"
-bump-my-version = "^1.2.0"
+isort = "^6.1.0"
+pylint = "^3.3.9"
+black = "^25.12.0"
+mypy = "^1.19.1"
+types-tqdm = "^4.67.3.20260303"
+pytest = "^8.4.2"
+pytest-cov = "^6.3.0"
+bump-my-version = "^1.2.7"
 
 [tool.poetry.scripts]
 ossrfc = 'ossrfc.checker:main'
