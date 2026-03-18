@@ -3,6 +3,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 name: "Reusable Poetry build workflow"
+description: "Reusable workflow for building Python projects using Poetry"
 inputs:
   python:
     default: "3.13"
@@ -13,7 +14,7 @@ runs:
   using: "composite"
   steps:
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
       with:
         python-version: ${{ inputs.python }}
     - name: Install dependencies

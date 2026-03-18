@@ -19,16 +19,16 @@ jobs:
       # do not abort the whole test job if one combination in the matrix fails
       fail-fast: false
       matrix:
-        python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
+        python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
         os: [ubuntu-24.04]
         include:
-          - python-version: "3.9"
+          - python-version: "3.10"
             os: macos-latest
-          - python-version: "3.9"
+          - python-version: "3.10"
             os: windows-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - uses: ./.github/actions/poetrybuild
         with:
           python: ${{ matrix.python-version }}
@@ -39,9 +39,9 @@ jobs:
   test-build-install:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
         with:
           python-version: "3.9"
       - name: Install poetry
@@ -59,7 +59,7 @@ jobs:
   selftest:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - uses: ./.github/actions/poetrybuild
       - name: Check own repository in DEBUG mode
         run: poetry run ossrfc -r https://github.com/dbsystel/oss-red-flag-checker --debug
@@ -67,7 +67,7 @@ jobs:
   pytest:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - uses: ./.github/actions/poetrybuild
       - name: Test with pytest
         run: poetry run pytest
@@ -75,7 +75,7 @@ jobs:
   pylint:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - uses: ./.github/actions/poetrybuild
       - name: Lint with pylint
         run: poetry run pylint ossrfc/ tests/
@@ -83,7 +83,7 @@ jobs:
   formatting:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - uses: ./.github/actions/poetrybuild
       - name: Test formatting with isort and black
         run: |
@@ -93,7 +93,7 @@ jobs:
   mypy:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - uses: ./.github/actions/poetrybuild
       - name: Test typing with mypy
         run: poetry run mypy
@@ -101,6 +101,6 @@ jobs:
   reuse:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - name: Check REUSE Compliance
-        uses: fsfe/reuse-action@v2
+        uses: fsfe/reuse-action@676e2d560c9a403aa252096d99fcab3e1132b0f5 # v6.0.0
