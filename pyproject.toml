@@ -30,7 +30,7 @@ termcolor = "^3.3.0"
 [tool.poetry.group.dev.dependencies]
 isort = "^6.1.0"
 pylint = "^3.3.9"
-black = "^25.12.0"
+black = "^26.0.0"
 mypy = "^1.19.1"
 types-tqdm = "^4.67.3.20260303"
 pytest = "^8.4.2"
