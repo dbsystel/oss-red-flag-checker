@@ -28,13 +28,13 @@ termcolor = "^3.3.0"
 
 
 [tool.poetry.group.dev.dependencies]
-isort = "^6.1.0"
-pylint = "^3.3.9"
+isort = "^8.0.0"
+pylint = "^4.0.0"
 black = "^26.0.0"
 mypy = "^1.19.1"
 types-tqdm = "^4.67.3.20260303"
-pytest = "^8.4.2"
-pytest-cov = "^6.3.0"
+pytest = "^9.0.0"
+pytest-cov = "^7.0.0"
 bump-my-version = "^1.2.7"
 
 [tool.poetry.scripts]
