@@ -1,0 +1,29 @@
+# SPDX-FileCopyrightText: 2023 DB Systel GmbH
+#
+# SPDX-License-Identifier: Apache-2.0
+
+name: Release Please
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/create-github-app-token@1b10c78c7865c340bc4f6099eb2f838309f1e8c3 # v3.1.1
+        id: app-token
+        with:
+          client-id: ${{ secrets.RELEASER_CLIENT_ID }}
+          private-key: ${{ secrets.RELEASER_PRIVATE_KEY }}
+
+      - uses: googleapis/release-please-action@5c625bfb5d1ff62eadeeb3772007f7f66fdcf071 # v4.4.1
+        with:
+          token: ${{ steps.app-token.outputs.token }}

@@ -5,3 +5,8 @@ path = "tests/resources/**"
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2023 DB Systel GmbH"
 SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = ["release-please-config.json", ".release-please-manifest.json", "CHANGELOG.md"]
+SPDX-FileCopyrightText = "2023 DB Systel GmbH"
+SPDX-License-Identifier = "Apache-2.0"
