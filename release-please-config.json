@@ -1,0 +1,28 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "release-type": "python",
+  "packages": {
+    ".": {
+      "extra-files": [
+        {
+          "path": "uv.lock",
+          "type": "toml",
+          "jsonpath": "$.package[?(@.name.value=='oss-red-flag-checker')].version"
+        }
+      ]
+    }
+  },
+  "pull-request-header": ":robot: New Release",
+  "changelog-sections": [
+    { "type": "feat", "section": "🚀 New Features", "hidden": false },
+    { "type": "fix", "section": "🔥 Bug Fixes", "hidden": false },
+    { "type": "perf", "section": "🏃 Performance Improvements", "hidden": false },
+    { "type": "revert", "section": "↩️ Reverts", "hidden": true },
+    { "type": "docs", "section": "📚 Documentation", "hidden": false },
+    { "type": "refactor", "section": "⌨️ Code Refactoring", "hidden": false },
+    { "type": "test", "section": "🧪 Automated Testing", "hidden": false },
+    { "type": "build", "section": "🛠️ Build System", "hidden": false },
+    { "type": "ci", "section": "📦 CI Improvements", "hidden": false },
+    { "type": "chore", "section": "⚙️ Chores", "hidden": false }
+  ]
+}

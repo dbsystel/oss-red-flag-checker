@@ -38,13 +38,20 @@ See commit `cc93fc8b07445e09b5b92de207632d86edc0125d` or
     * Add its analysis under the "Analysis based on data" headline
 
 
-## Release workflow
+## Commit Messages
 
-* Upgrade dependencies: `uv sync --upgrade`
-* Bump version in `pyproject.toml`
-* Build package: `uv build`
-* Optional: publish to `test.pypi.org` and test the package: `pip install -i https://test.pypi.org/simple oss-red-flag-checker`
-* Publish to PyPI: create a GitHub release to trigger the `publish.yaml` workflow
-* Create Git tag: `git tag -s vx.y.z` (use a minimal message)
-* Push to GitHub: `git push && git push --tags`
-* Make a release on GitHub
+This project follows the [**Conventional Commits**](https://www.conventionalcommits.org/) specification for commit messages. This is critical to support proper automation of the release process and changelog generation.
+
+## Pull Requests
+
+When contributing to this project, please open a pull request with a clear description of the changes you have made. The **title of your pull request** should follow the conventional commit format (e.g., `feat: add new feature`, `fix: correct a bug`, etc.).
+
+Ensure to use the **Squash and merge** option when merging your pull request.
+
+Both the PR title and merge method are required for a proper release process (see below).
+
+## Release Process
+
+This project uses [release-please](https://github.com/googleapis/release-please) and its respective GitHub Action to automate the release process. This automatically creates a pull request with the version bump and changelog updates whenever a commit is pushed to the default branch. The version bump is determined by the [conventional commit messages](https://www.conventionalcommits.org/) in the commit history since the last release. Once the release pull request is merged, a new release will be published on GitHub.
+
+The relevant configuration for release-please can be found in the `.github/workflows/release-please.yaml` file and the `release-please-config.json` file. Ensure that the branch and project names are correctly set up in the workflow file and configuration file to match your repository's structure.

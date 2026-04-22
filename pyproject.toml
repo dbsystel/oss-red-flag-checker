@@ -44,7 +44,6 @@ ossrfc = "ossrfc.checker:main"
 dev = [
     "ruff>=0.15.10",
     "ty>=0.0.29",
-    "bump-my-version>=1.2.4,<2",
     "types-tqdm>=4.67.3.20260303,<5",
     "pytest>=9.0.0,<10",
     "pytest-cov>=7.0.0,<8",
@@ -91,30 +90,3 @@ include = ["ossrfc"]
 # PYTEST settings
 [tool.pytest.ini_options]
 addopts = "--cov=ossrfc"
-
-# Bump-My-Version
-[tool.bumpversion]
-commit = true
-tag = true
-sign_tags = true
-allow_dirty = false
-tag_name = "v{new_version}"
-
-[[tool.bumpversion.files]]
-filename = "pyproject.toml"
-regex = true
-search = "^version = \"{current_version}\""
-replace = "version = \"{new_version}\""
-
-[[tool.bumpversion.files]]
-filename = "uv.lock"
-search = """
-[[package]]
-name = "oss-red-flag-checker"
-version = "{current_version}"
-"""
-replace = """
-[[package]]
-name = "oss-red-flag-checker"
-version = "{new_version}"
-"""
