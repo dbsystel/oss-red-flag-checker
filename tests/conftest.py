@@ -34,15 +34,15 @@ def _create_fake_repository(tmpdir_factory) -> Path:
     return directory
 
 
-@pytest.fixture()
+@pytest.fixture
 def fake_repository(tmpdir_factory):
-    """Return a fake repository directory"""
+    """Return a fake repository directory."""
     return _create_fake_repository(tmpdir_factory)
 
 
-@pytest.fixture()
+@pytest.fixture
 def fake_report(tmpdir_factory) -> RepoReport:
-    """Create a temporary empty RepoReport"""
+    """Create a temporary empty RepoReport."""
     report = RepoReport()
 
     report.url = "https://github.com/dbsystel/playground"
@@ -55,13 +55,13 @@ def fake_report(tmpdir_factory) -> RepoReport:
 
 @pytest.fixture
 def cla_keywords():
-    """CLA_KEYWORDS"""
+    """CLA_KEYWORDS."""
     return CLA_KEYWORDS
 
 
 @pytest.fixture
 def cla_input_data_match_true():
-    """Test strings for CLA that shall match"""
+    """Test strings for CLA that shall match."""
     return [
         "Contribution License Agreement",
         "contributor licensing Agreement",
@@ -74,5 +74,5 @@ def cla_input_data_match_true():
 
 @pytest.fixture
 def cla_input_data_match_false():
-    """Test strings for CLA that NOT shall match"""
+    """Test strings for CLA that NOT shall match."""
     return ["Much CLArity", "Contributors"]

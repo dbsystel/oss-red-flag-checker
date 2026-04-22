@@ -10,13 +10,15 @@ on:
       - main
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
-  # Test using the tool via poetry on different OSes and python versions
+  # Test using the tool via uv on different OSes and python versions
   test-os-python-matrix:
     runs-on: ${{ matrix.os }}
     strategy:
       max-parallel: 10
-      # do not abort the whole test job if one combination in the matrix fails
       fail-fast: false
       matrix:
         python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
@@ -29,25 +31,33 @@ jobs:
 
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - uses: ./.github/actions/poetrybuild
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/uvbuild
         with:
           python: ${{ matrix.python-version }}
+          uv_args: --no-dev
       - name: Execute ossrfc
-        run: poetry run ossrfc --help
+        run: uv run ossrfc --help
+
 
   # Test building the package and installing it via pip3
   test-build-install:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
       - name: Set up Python
         uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
         with:
           python-version: "3.14"
-      - name: Install poetry
-        run: pip install poetry
+      - name: Install uv
+        uses: astral-sh/setup-uv@cec208311dfd045dd5311c1add060b2062131d57 # v8.0.0
+        with:
+          enable-cache: true
       - name: Build package
-        run: poetry build
+        run: uv build
       - name: Install package
         run: pip3 install dist/oss_red_flag_checker-*.tar.gz
       - name: Run package
@@ -60,47 +70,58 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - uses: ./.github/actions/poetrybuild
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/uvbuild
       - name: Check own repository in DEBUG mode
-        run: poetry run ossrfc -r https://github.com/dbsystel/oss-red-flag-checker --debug
+        run: uv run ossrfc -r https://github.com/dbsystel/oss-red-flag-checker --debug
 
   pytest:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - uses: ./.github/actions/poetrybuild
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/uvbuild
       - name: Test with pytest
-        run: poetry run pytest
+        run: uv run pytest
 
-  pylint:
+  # Quality checks
+  ruff-lint:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - uses: ./.github/actions/poetrybuild
-      - name: Lint with pylint
-        run: poetry run pylint ossrfc/ tests/
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/uvbuild
+      - name: Lint with ruff
+        run: uv run ruff check
 
-  formatting:
+  ruff-format:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - uses: ./.github/actions/poetrybuild
-      - name: Test formatting with isort and black
-        run: |
-          poetry run isort --check ossrfc/
-          poetry run black .
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/uvbuild
+      - name: Check formatting with ruff
+        run: uv run ruff format --check
 
-  mypy:
+  ty:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - uses: ./.github/actions/poetrybuild
-      - name: Test typing with mypy
-        run: poetry run mypy
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/uvbuild
+      - name: Test typing with ty
+        run: uv run ty check
 
   reuse:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
       - name: Check REUSE Compliance
         uses: fsfe/reuse-action@676e2d560c9a403aa252096d99fcab3e1132b0f5 # v6.0.0

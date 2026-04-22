@@ -2,14 +2,17 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-"""Tests for _matching.py"""
+"""Tests for _matching.py."""
 
 from ossrfc._matching import find_patterns_in_list, lines_as_list
 
 
-def test_find_patterns_in_list(cla_keywords, cla_input_data_match_true, cla_input_data_match_false):
+def test_find_patterns_in_list(
+    cla_keywords, cla_input_data_match_true, cla_input_data_match_false
+) -> None:
     """Search for a list of patterns in one or multiple strings. The patterns
-    can be regexes"""
+    can be regexes.
+    """
     # Define some sample patterns and input data for testing
     # patterns = [r"\d+", r"apple"]
     # input_data = [
@@ -43,8 +46,8 @@ def test_find_patterns_in_list(cla_keywords, cla_input_data_match_true, cla_inpu
     assert find_patterns_in_list([r"no_match_pattern"], *cla_input_data_match_true) == []
 
 
-def test_lines_as_list(fake_repository):
-    """Return all lines of a file as list of lines"""
+def test_lines_as_list(fake_repository) -> None:
+    """Return all lines of a file as list of lines."""
     assert lines_as_list(fake_repository / "README.md") == [
         "# Project Name",
         "",

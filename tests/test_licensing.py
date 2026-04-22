@@ -2,15 +2,14 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-"""Tests for _matching.py"""
+"""Tests for _matching.py."""
 
 from ossrfc._licensing import cla_in_files, dco_in_files, inoutbound
 from ossrfc._report import RepoReport
 
 
-def test_cla_in_files(fake_report: RepoReport):
-    """Search for CLA requirements in README and CONTRIBUTING files"""
-
+def test_cla_in_files(fake_report: RepoReport) -> None:
+    """Search for CLA requirements in README and CONTRIBUTING files."""
     cla_in_files(fake_report)
 
     # Have all relevant files been searched?
@@ -31,9 +30,8 @@ def test_cla_in_files(fake_report: RepoReport):
     ]
 
 
-def test_dco_in_files(fake_report: RepoReport):
-    """Search for DCO requirements in README and CONTRIBUTING files"""
-
+def test_dco_in_files(fake_report: RepoReport) -> None:
+    """Search for DCO requirements in README and CONTRIBUTING files."""
     dco_in_files(fake_report)
 
     # Have all relevant files been searched?
@@ -53,9 +51,8 @@ def test_dco_in_files(fake_report: RepoReport):
     ]
 
 
-def test_inoutbound(fake_report: RepoReport):
-    """Search for inbound=outbound rules in README and CONTRIBUTING files"""
-
+def test_inoutbound(fake_report: RepoReport) -> None:
+    """Search for inbound=outbound rules in README and CONTRIBUTING files."""
     inoutbound(fake_report)
 
     # Have all relevant files been searched?

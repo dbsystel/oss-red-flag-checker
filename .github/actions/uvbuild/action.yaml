@@ -1,0 +1,35 @@
+# SPDX-FileCopyrightText: 2023 DB Systel GmbH
+#
+# SPDX-License-Identifier: Apache-2.0
+
+name: "Reusable uv build workflow"
+description: "Reusable workflow to set up Python and install dependencies via uv. The Python version and additional uv arguments can be configured via inputs."
+inputs:
+  python:
+    default: "3.14"
+    description: "Value for 'python-version'"
+    required: false
+    type: string
+  uv_args:
+    default: ""
+    description: "Additional arguments for the uv install step'"
+    required: false
+    type: string
+runs:
+  using: "composite"
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+      with:
+        python-version: ${{ inputs.python }}
+    - name: Install uv
+      uses: astral-sh/setup-uv@cec208311dfd045dd5311c1add060b2062131d57 # v8.0.0
+      with:
+        enable-cache: true
+    - name: Setup project
+      run: |
+        uv_args="${UV_ARGS}"
+        uv sync  --locked --all-extras --dev $uv_args
+      env:
+        UV_ARGS: ${{ inputs.uv_args }}
+      shell: bash
