@@ -2,11 +2,12 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-"""Dataclass holding the analysis of a repository and functions to display it"""
+"""Dataclass holding the analysis of a repository and functions to display it."""
 
 import json
 from dataclasses import asdict, dataclass, field
 from io import StringIO
+from typing import cast
 
 from github import Github
 from termcolor import colored
@@ -17,7 +18,7 @@ JSON_VERSION = "1.0"
 
 @dataclass
 class RepoReport:  # pylint: disable=too-many-instance-attributes
-    """Data class that holds a report about a repository"""
+    """Data class that holds a report about a repository."""
 
     # NOTE: attributes ending with _ are removed in the final output as they are
     # only relevant for technical reasons
@@ -26,7 +27,7 @@ class RepoReport:  # pylint: disable=too-many-instance-attributes
     shortname: str = ""
     repodir_: str = ""
     impossible_checks_: list = field(default_factory=list)
-    github_: Github = Github()
+    github_: Github = field(default_factory=Github)
     files_: list = field(default_factory=list)
     red_flags: list = field(default_factory=list)
     yellow_flags: list = field(default_factory=list)
@@ -52,16 +53,17 @@ class RepoReport:  # pylint: disable=too-many-instance-attributes
 
 def _dictify_report(report: RepoReport) -> dict:
     """Removes temporary/technical keys/attributes and returns a dictionary of
-    the report, based on the dataclass"""
+    the report, based on the dataclass.
+    """
     return asdict(report)
 
 
-def _listdict_reports(report: RepoReport) -> list:
-    """Make a single or RepoReports a list of dicts"""
+def _listdict_reports(report: RepoReport | list[RepoReport]) -> list:
+    """Make a single or RepoReports a list of dicts."""
     if isinstance(report, list):
-        report_list = []
-        for single_report in report:
-            report_list.append(_dictify_report(single_report))
+        report_list = [
+            _dictify_report(cast("RepoReport", single_report)) for single_report in report
+        ]
     else:
         report_list = [_dictify_report(report)]
 
@@ -69,7 +71,7 @@ def _listdict_reports(report: RepoReport) -> list:
 
 
 def _dict_skeleton() -> dict:
-    """Create a skeleton for the final report"""
+    """Create a skeleton for the final report."""
     return {
         "json_version": JSON_VERSION,
         "disabled_checks": [],
@@ -79,8 +81,10 @@ def _dict_skeleton() -> dict:
     }
 
 
-def print_json_report(report: RepoReport, disabled_checks: list, debug: bool, ignore: list) -> None:
-    """Print the raw result of the linting in a JSON"""
+def print_json_report(
+    report: RepoReport | list[RepoReport], disabled_checks: list, debug: bool, ignore: list
+) -> None:
+    """Print the raw result of the linting in a JSON."""
     report_dict = _dict_skeleton()
 
     report_dict["disabled_checks"] = disabled_checks
@@ -92,10 +96,7 @@ def print_json_report(report: RepoReport, disabled_checks: list, debug: bool, ig
     # attributes. If not in DEBUG mode, remove them from the dict
     for repo_report in report_dict["repositories"]:
         if not debug:
-            removed_keys = []
-            for key in repo_report.keys():
-                if key.endswith("_"):
-                    removed_keys.append(key)
+            removed_keys = [key for key in repo_report if key.endswith("_")]
 
             # Actually remove keys
             for key in removed_keys:
@@ -107,9 +108,8 @@ def print_json_report(report: RepoReport, disabled_checks: list, debug: bool, ig
     print(json.dumps(report_dict, indent=2, ensure_ascii=False))
 
 
-def print_text_analysis(report_list: list):  # noqa: C901
-    """Print a plain text analysis of the findings"""
-
+def print_text_analysis(report_list: list) -> None:  # noqa: C901
+    """Print a plain text analysis of the findings."""
     result = []
     # Go through each report separately
     for report in report_list:

@@ -12,9 +12,9 @@ We are committed to fostering a welcoming, respectful, and harassment-free envir
 
 ## Development setup
 
-Starting development is as easy as installing `poetry` and running `poetry install` once.
+Starting development is as easy as installing `uv` and running `uv sync` once.
 
-In order to run the project in the new virtual environment, run `poetry run ossrfc`.
+In order to run the project in the new virtual environment, run `uv run ossrfc`.
 
 ## Typical contributions
 
@@ -40,11 +40,11 @@ See commit `cc93fc8b07445e09b5b92de207632d86edc0125d` or
 
 ## Release workflow
 
-* Upgrade dependencies: `poetry update`
+* Upgrade dependencies: `uv sync --upgrade`
 * Bump version in `pyproject.toml`
-* Build package: `poetry build`
-* Optional: publish to `test.pypi.org` with `poetry publish -r test-pypi` and test the package: `pip install -i https://test.pypi.org/simple oss-red-flag-checker`
-* Publish to PyPI: `poetry publish` (you may have to set your credentials/API key first)
+* Build package: `uv build`
+* Optional: publish to `test.pypi.org` and test the package: `pip install -i https://test.pypi.org/simple oss-red-flag-checker`
+* Publish to PyPI: create a GitHub release to trigger the `publish.yaml` workflow
 * Create Git tag: `git tag -s vx.y.z` (use a minimal message)
 * Push to GitHub: `git push && git push --tags`
 * Make a release on GitHub

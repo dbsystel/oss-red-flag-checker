@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-"""Global init file"""
+"""Global init file."""
 
 from importlib.metadata import PackageNotFoundError, version
 

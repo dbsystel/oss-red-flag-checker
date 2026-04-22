@@ -1,10 +1,8 @@
-#!/usr/bin/env python3
-
 # SPDX-FileCopyrightText: 2023 DB Systel GmbH
 #
 # SPDX-License-Identifier: Apache-2.0
 
-"""Check a repository for typical red flags"""
+"""Check a repository for typical red flags."""
 
 import argparse
 import logging
@@ -125,11 +123,10 @@ parser_repos.add_argument(
 )
 
 
-def configure_logger(args) -> logging.Logger:
-    """Set logging options"""
+def configure_logger(args: argparse.Namespace) -> logging.Logger:
+    """Set logging options."""
     log = logging.getLogger()
     logging.basicConfig(
-        encoding="utf-8",
         format="[%(asctime)s] %(levelname)s: %(message)s",
         datefmt="%Y-%m-%d %H:%M:%S",
     )
@@ -139,13 +136,13 @@ def configure_logger(args) -> logging.Logger:
     elif args.verbose:
         log.setLevel(logging.INFO)
     else:
-        log.setLevel(logging.WARN)
+        log.setLevel(logging.WARNING)
 
     return log
 
 
 def check_enabled(disabled_checks: list, check_name: str) -> bool:
-    """Check if the given check has been disabled by the user via a -d parameter"""
+    """Check if the given check has been disabled by the user via a -d parameter."""
     if check_name in disabled_checks:
         logging.info("Check '%s' has been disabled", check_name)
         return False
@@ -154,7 +151,7 @@ def check_enabled(disabled_checks: list, check_name: str) -> bool:
 
 
 def check_repo(repo: str, gthb: Github, disable: list, cache: bool) -> RepoReport:  # noqa: C901
-    """Run all checks on a single repository and return a report"""
+    """Run all checks on a single repository and return a report."""
     # Initialise the report dataclass
     report = RepoReport()
 
@@ -224,8 +221,8 @@ def check_repo(repo: str, gthb: Github, disable: list, cache: bool) -> RepoRepor
     return report
 
 
-def main():
-    """Main function"""
+def main() -> None:
+    """Main function."""
     args = parser.parse_args()
 
     # Set logger settings

@@ -2,13 +2,13 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-"""Functions that analyse and evaluate the findings"""
+"""Functions that analyse and evaluate the findings."""
 
 from ._report import RepoReport
 
 
 def _evaluate_cla_files(report: RepoReport) -> None:
-    """Evaluate CLA findings in files"""
+    """Evaluate CLA findings in files."""
     if report.cla_files:
         report.red_flags.append("cla")
         cla_filelist = [finding["file"] for finding in report.cla_files]
@@ -26,7 +26,7 @@ def _evaluate_cla_files(report: RepoReport) -> None:
 
 
 def _evaluate_cla_pulls(report: RepoReport) -> None:
-    """Evaluate CLA findings in pull requests"""
+    """Evaluate CLA findings in pull requests."""
     if report.cla_pulls:
         report.red_flags.append("cla")
         # Get all affected pull request numbers and CI types and make them unique
@@ -49,7 +49,7 @@ def _evaluate_cla_pulls(report: RepoReport) -> None:
 
 
 def _evaluate_dco_files(report: RepoReport) -> None:
-    """Evaluate DCO findings in files"""
+    """Evaluate DCO findings in files."""
     if report.dco_files:
         report.green_flags.append("dco")
         dco_filelist = [finding["file"] for finding in report.dco_files]
@@ -67,7 +67,7 @@ def _evaluate_dco_files(report: RepoReport) -> None:
 
 
 def _evaluate_dco_pulls(report: RepoReport) -> None:
-    """Evaluate DCO findings in pull requests"""
+    """Evaluate DCO findings in pull requests."""
     if report.dco_pulls:
         report.green_flags.append("dco")
         # Get all affected pull request numbers and CI types and make them unique
@@ -90,7 +90,7 @@ def _evaluate_dco_pulls(report: RepoReport) -> None:
 
 
 def _evaluate_inoutbound_files(report: RepoReport) -> None:
-    """Evaluate inbound=outbound findings in files"""
+    """Evaluate inbound=outbound findings in files."""
     if report.inoutbound_files:
         report.green_flags.append("inbound=outbound")
         inoutbound_filelist = [finding["file"] for finding in report.inoutbound_files]
@@ -108,7 +108,7 @@ def _evaluate_inoutbound_files(report: RepoReport) -> None:
 
 
 def _evaluate_licensefile(report: RepoReport) -> None:
-    """Evaluate missing license file findings"""
+    """Evaluate missing license file findings."""
     if not report.licensefiles:
         report.red_flags.append("no-license-file")
         report.analysis.append(
@@ -122,8 +122,7 @@ def _evaluate_licensefile(report: RepoReport) -> None:
 
 
 def _evaluate_maintainer_dominance(report: RepoReport) -> None:
-    """Evaluate maintainer dominance"""
-
+    """Evaluate maintainer dominance."""
     if report.maintainer_dominance == 1:
         report.red_flags.append("only-one-contributor")
         report.analysis.append(
@@ -134,7 +133,7 @@ def _evaluate_maintainer_dominance(report: RepoReport) -> None:
                 "indicator": "The project only has one contributor",
             }
         )
-    elif report.maintainer_dominance > 0.75:
+    elif report.maintainer_dominance > 0.75:  # noqa: PLR2004
         report.yellow_flags.append("predominant-main-contributor")
         report.analysis.append(
             {
@@ -166,8 +165,7 @@ def _evaluate_maintainer_dominance(report: RepoReport) -> None:
 
 
 def _evaluate_commit_date(report: RepoReport) -> None:
-    """Evaluate newest commit date by both humans and bots"""
-
+    """Evaluate newest commit date by both humans and bots."""
     hcom = report.days_since_last_human_commit
     bcom = report.days_since_last_bot_commit
 
@@ -176,7 +174,7 @@ def _evaluate_commit_date(report: RepoReport) -> None:
     if hcom == -1 and bcom == -1:
         pass
     # No commit ever or older than 1 year by humans or bots
-    elif (hcom > 365 or hcom == -1) and (bcom > 365 or bcom == -1):
+    elif (hcom > 365 or hcom == -1) and (bcom > 365 or bcom == -1):  # noqa: PLR2004
         report.red_flags.append("orphaned")
         report.analysis.append(
             {
@@ -190,7 +188,7 @@ def _evaluate_commit_date(report: RepoReport) -> None:
             }
         )
     # Human commit older than 1 year, but bot commit newer than 1 year
-    elif (hcom > 365 or hcom == -1) and (bcom < 365):
+    elif (hcom > 365 or hcom == -1) and (bcom < 365):  # noqa: PLR2004
         report.yellow_flags.append("orphaned-but-bot")
         report.analysis.append(
             {
@@ -205,7 +203,7 @@ def _evaluate_commit_date(report: RepoReport) -> None:
             }
         )
     # Human commit older than 90 days
-    elif hcom > 90:
+    elif hcom > 90:  # noqa: PLR2004
         report.yellow_flags.append("infrequent-updates")
         report.analysis.append(
             {
@@ -213,7 +211,7 @@ def _evaluate_commit_date(report: RepoReport) -> None:
                 "ignored": "commit-age" in report.ignorelist_,
                 "severity": "yellow",
                 "indicator": (
-                    "The last commit made by a human is more than 90 days old " f"({hcom} days)"
+                    f"The last commit made by a human is more than 90 days old ({hcom} days)"
                 ),
             }
         )
@@ -226,14 +224,14 @@ def _evaluate_commit_date(report: RepoReport) -> None:
                 "ignored": "commit-age" in report.ignorelist_,
                 "severity": "green",
                 "indicator": (
-                    "The last commit made by a human is less than 90 days old " f"({hcom} days)"
+                    f"The last commit made by a human is less than 90 days old ({hcom} days)"
                 ),
             }
         )
 
 
 def analyse_report(report: RepoReport, ignorelist: list) -> None:
-    """Analyse the report and evaluate the findings"""
+    """Analyse the report and evaluate the findings."""
     # Add list of ignored findings to report
     report.ignorelist_ = ignorelist
 

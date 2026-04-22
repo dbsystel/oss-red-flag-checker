@@ -77,11 +77,11 @@ You can install the latest release using pip: `pip3 install oss-red-flag-checker
 
 The command to run the program afterwards will be `ossrfc`.
 
-### Install/develop using poetry
+### Install/develop using uv
 
-You can also run this tool via `poetry` that takes care of installing the correct dependencies in a clean environment. This also makes development very easy. We recommend to have at least poetry 1.1.0. Inside of the repository, run `poetry install` once and you are ready to go. If you update the repository, run this command again to fetch new versions and dependencies.
+You can also run this tool via `uv` that takes care of installing the correct dependencies in a clean environment. This also makes development very easy. Inside of the repository, run `uv sync` once and you are ready to go. If you update the repository, run this command again to fetch new versions and dependencies.
 
-The command to run the programm will be `poetry run ossrfc`.
+The command to run the program will be `uv run ossrfc`.
 
 ## Usage
 

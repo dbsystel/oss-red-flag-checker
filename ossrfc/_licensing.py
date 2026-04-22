@@ -2,10 +2,11 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-"""Check a repository for licensing issues"""
+"""Check a repository for licensing issues."""
 
 import logging
-import os
+from pathlib import Path
+from typing import Any
 
 from ._git import gh_api_call
 from ._matching import find_patterns_in_list, lines_as_list
@@ -31,16 +32,16 @@ INOUTBOUND_KEYWORDS = [r"(?i)inbound[ ]*=[ ]*outbound"]
 LICENSEINFO_EXTRA_PATHS = [".github"]
 
 
-def cla_in_files(report: RepoReport):
-    """Search for CLA requirements in README and CONTRIBUTING files"""
+def cla_in_files(report: RepoReport) -> None:
+    """Search for CLA requirements in README and CONTRIBUTING files."""
     # Find CONTRIBUTING and README files
     report.cla_searched_files_ = find_patterns_in_list(
         [r"(?i)^(|.*\/)(readme|contributing)(\.[a-z]+)?$"], *report.files_
     )
 
     for file in report.cla_searched_files_:
-        file_path = os.path.join(report.repodir_, file)
-        file_lines = lines_as_list(file_path)
+        file_path = Path(report.repodir_) / file
+        file_lines = lines_as_list(str(file_path))
 
         if cla_matches := find_patterns_in_list(CLA_KEYWORDS, *file_lines):
             report.cla_files.append(
@@ -51,16 +52,16 @@ def cla_in_files(report: RepoReport):
             )
 
 
-def dco_in_files(report: RepoReport):
-    """Search for DCO requirements in README and CONTRIBUTING files"""
+def dco_in_files(report: RepoReport) -> None:
+    """Search for DCO requirements in README and CONTRIBUTING files."""
     # Find CONTRIBUTING and README files
     report.dco_searched_files_ = find_patterns_in_list(
         [r"(?i)^(|.*\/)(readme|contributing)(\.[a-z]+)?$"], *report.files_
     )
 
     for file in report.dco_searched_files_:
-        file_path = os.path.join(report.repodir_, file)
-        file_lines = lines_as_list(file_path)
+        file_path = Path(report.repodir_) / file
+        file_lines = lines_as_list(str(file_path))
 
         if dco_matches := find_patterns_in_list(DCO_KEYWORDS, *file_lines):
             report.dco_files.append(
@@ -71,8 +72,8 @@ def dco_in_files(report: RepoReport):
             )
 
 
-def _cla_or_dco_in_checks(report, check_runs, newest_pull):
-    """Part of cla_or_dco_in_pulls(), checking action runs pull requests"""
+def _cla_or_dco_in_checks(report: RepoReport, check_runs: Any, newest_pull: Any) -> None:  # noqa: ANN401
+    """Part of cla_or_dco_in_pulls(), checking action runs pull requests."""
     for check in check_runs:
         logging.debug("Checking check-run %s", check.html_url)
         # If we have a CLA match, add to report
@@ -102,8 +103,8 @@ def _cla_or_dco_in_checks(report, check_runs, newest_pull):
             )
 
 
-def _cla_or_dco_in_statuses(report, statuses, newest_pull):
-    """Part of cla_or_dco_in_pulls(), checking statuses in pull requests"""
+def _cla_or_dco_in_statuses(report: RepoReport, statuses: Any, newest_pull: Any) -> None:  # noqa: ANN401
+    """Part of cla_or_dco_in_pulls(), checking statuses in pull requests."""
     for status in statuses:
         logging.debug("Checking status %s", status.url)
         # If we have a CLA match, add to report
@@ -130,8 +131,7 @@ def _cla_or_dco_in_statuses(report, statuses, newest_pull):
 
 
 def cla_or_dco_in_pulls(report: RepoReport) -> None:
-    """Search for CLA or DCO requirements in Pull Requests"""
-
+    """Search for CLA or DCO requirements in Pull Requests."""
     repo = gh_api_call(report.github_, report.github_, "get_repo", full_name_or_id=report.shortname)
 
     # Get newest Pull Request against default branch as we assume that CLA
@@ -182,16 +182,16 @@ def cla_or_dco_in_pulls(report: RepoReport) -> None:
     _cla_or_dco_in_statuses(report, statuses, newest_pull)
 
 
-def inoutbound(report: RepoReport):
-    """Search for inbound=outbound rules in README and CONTRIBUTING files"""
+def inoutbound(report: RepoReport) -> None:
+    """Search for inbound=outbound rules in README and CONTRIBUTING files."""
     # Find CONTRIBUTING and README files
     report.inoutbound_searched_files_ = find_patterns_in_list(
         [r"(?i)^(|.*\/)(readme|contributing)(\.[a-z]+)?$"], *report.files_
     )
 
     for file in report.inoutbound_searched_files_:
-        file_path = os.path.join(report.repodir_, file)
-        file_lines = lines_as_list(file_path)
+        file_path = Path(report.repodir_) / file
+        file_lines = lines_as_list(str(file_path))
 
         if inoutbound_matches := find_patterns_in_list(INOUTBOUND_KEYWORDS, *file_lines):
             report.inoutbound_files.append(
@@ -202,8 +202,9 @@ def inoutbound(report: RepoReport):
             )
 
 
-def licensefile(report: RepoReport):
+def licensefile(report: RepoReport) -> None:
     """Search for a LICENSE/COPYING file. Also includes LICENSES directory
-    according to REUSE. If absent, it's a red flag"""
+    according to REUSE. If absent, it's a red flag.
+    """
     # Find CONTRIBUTING and README files or LICENSES directory
     report.licensefiles = find_patterns_in_list([r"^(LICENSE|License|COPYING)"], *report.files_)
