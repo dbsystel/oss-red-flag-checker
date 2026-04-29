@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.1.10](https://github.com/dbsystel/oss-red-flag-checker/compare/v0.1.9...v0.1.10) (2026-04-29)
+
+
+### 📦 CI Improvements
+
+* add zizmor workflow ([#57](https://github.com/dbsystel/oss-red-flag-checker/issues/57)) ([9f527e6](https://github.com/dbsystel/oss-red-flag-checker/commit/9f527e6632ac29c43ff459d008c7b8f2a3b7ea0c))
+* restrict some workflows to only run upstream ([#59](https://github.com/dbsystel/oss-red-flag-checker/issues/59)) ([6ca5794](https://github.com/dbsystel/oss-red-flag-checker/commit/6ca5794fe233af57d4efea7a4c93f59b96acfd90))
+
+
+### ⚙️ Chores
+
+* **deps:** lock file maintenance ([#55](https://github.com/dbsystel/oss-red-flag-checker/issues/55)) ([9e3b7e6](https://github.com/dbsystel/oss-red-flag-checker/commit/9e3b7e6b0cab63ff2a61a54514817e93716e7b95))
+* **deps:** update googleapis/release-please-action action to v5 ([#54](https://github.com/dbsystel/oss-red-flag-checker/issues/54)) ([7e76bb3](https://github.com/dbsystel/oss-red-flag-checker/commit/7e76bb3420d01dd82e27d2a9fdf0349f4d6df2bf))
+
 ## [0.1.9](https://github.com/dbsystel/oss-red-flag-checker/compare/v0.1.8...v0.1.9) (2026-04-22)
 
 
