@@ -24,6 +24,11 @@ jobs:
         with:
           client-id: ${{ secrets.RELEASER_CLIENT_ID }}
           private-key: ${{ secrets.RELEASER_PRIVATE_KEY }}
+          repositories: oss-red-flag-checker
+          skip-token-revoke: false
+          permission-contents: write
+          permission-issues: write
+          permission-pull-requests: write
 
       - uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7 # v5.0.0
         with:
