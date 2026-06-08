@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.1.11](https://github.com/dbsystel/oss-red-flag-checker/compare/v0.1.10...v0.1.11) (2026-06-08)
+
+
+### 📦 CI Improvements
+
+* harden release-please app token permissions ([#68](https://github.com/dbsystel/oss-red-flag-checker/issues/68)) ([0e00ee8](https://github.com/dbsystel/oss-red-flag-checker/commit/0e00ee88afe4d126729c35e2628fee30d538ec7b))
+* remove unsupported issues permission from app token ([#69](https://github.com/dbsystel/oss-red-flag-checker/issues/69)) ([063032c](https://github.com/dbsystel/oss-red-flag-checker/commit/063032c2e134450f55019645d593aacae59a69b5))
+
+
+### ⚙️ Chores
+
+* **deps:** lock file maintenance ([#66](https://github.com/dbsystel/oss-red-flag-checker/issues/66)) ([43017ab](https://github.com/dbsystel/oss-red-flag-checker/commit/43017abb4284679500209bb832ed43b19e0b61c8))
+* **deps:** lock file maintenance ([#71](https://github.com/dbsystel/oss-red-flag-checker/issues/71)) ([5ea26a5](https://github.com/dbsystel/oss-red-flag-checker/commit/5ea26a5e023d83c7c6779acac29bf1da4ebf1ba1))
+* **deps:** lock file maintenance ([#74](https://github.com/dbsystel/oss-red-flag-checker/issues/74)) ([7273fd0](https://github.com/dbsystel/oss-red-flag-checker/commit/7273fd0761abb12b54b4dce7b871e3270a830df8))
+* **deps:** update actions/create-github-app-token action to v3.2.0 ([#64](https://github.com/dbsystel/oss-red-flag-checker/issues/64)) ([c8eead3](https://github.com/dbsystel/oss-red-flag-checker/commit/c8eead3895fe194bc4dad8a6c23a2c1b9bdd0562))
+* **deps:** update github actions group to v6.0.3 ([#72](https://github.com/dbsystel/oss-red-flag-checker/issues/72)) ([eb0f8f5](https://github.com/dbsystel/oss-red-flag-checker/commit/eb0f8f5d729b9c202f2a5b2f00fa11b725f4c11d))
+* **deps:** update github actions group to v8.2.0 ([#73](https://github.com/dbsystel/oss-red-flag-checker/issues/73)) ([cd79440](https://github.com/dbsystel/oss-red-flag-checker/commit/cd79440e707d9821b6fe023d2c68ac494ef55ebb))
+* **deps:** update zizmorcore/zizmor-action action to v0.5.5 ([#67](https://github.com/dbsystel/oss-red-flag-checker/issues/67)) ([6e2efdb](https://github.com/dbsystel/oss-red-flag-checker/commit/6e2efdb2f703552f27c8309744d15b9488b7191b))
+* **deps:** update zizmorcore/zizmor-action action to v0.5.6 ([#70](https://github.com/dbsystel/oss-red-flag-checker/issues/70)) ([d67f746](https://github.com/dbsystel/oss-red-flag-checker/commit/d67f746efeb0316191cd75540825471cd8c402d4))
+
 ## [0.1.10](https://github.com/dbsystel/oss-red-flag-checker/compare/v0.1.9...v0.1.10) (2026-05-11)
 
 
