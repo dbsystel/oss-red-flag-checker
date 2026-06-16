@@ -82,6 +82,17 @@ parser.add_argument(
     help="Cache cloned remote repositories to speed up subsequent checks",
 )
 parser.add_argument(
+    "-l",
+    "--local",
+    default="",
+    metavar="PATH",
+    help=(
+        "Use a local repository clone instead of cloning from the remote URL. "
+        "The repository URL (-r) is still required for GitHub API checks. "
+        "Cannot be combined with --cache."
+    ),
+)
+parser.add_argument(
     "-t",
     "--token",
     default="",
@@ -150,7 +161,7 @@ def check_enabled(disabled_checks: list, check_name: str) -> bool:
     return True
 
 
-def check_repo(repo: str, gthb: Github, disable: list, cache: bool) -> RepoReport:  # noqa: C901
+def check_repo(repo: str, gthb: Github, disable: list, cache: bool, local: str = "") -> RepoReport:  # noqa: C901, PLR0912
     """Run all checks on a single repository and return a report."""
     # Initialise the report dataclass
     report = RepoReport()
@@ -160,14 +171,19 @@ def check_repo(repo: str, gthb: Github, disable: list, cache: bool) -> RepoRepor
 
     logging.info("Checking repository %s", report.url)
 
-    # Clone repo, depending on cache status
-    if cache:
+    # Use a local path directly if provided, otherwise clone
+    if local:
+        if cache:
+            logging.warning("--local and --cache are mutually exclusive; --cache is ignored")
+        report.repodir_ = local
+        logging.info("Using local repository path: %s", local)
+    elif cache:
         report.repodir_ = get_cache_dir(report.url)
+        clone_or_pull_repository(report.url, report.repodir_)
     else:
         repodir_object = tempfile.TemporaryDirectory()  # pylint: disable=consider-using-with
         report.repodir_ = repodir_object.name
-
-    clone_or_pull_repository(report.url, report.repodir_)
+        clone_or_pull_repository(report.url, report.repodir_)
 
     # List all first-level files of the repository and relevant extra paths
     # for CLAs
@@ -213,7 +229,7 @@ def check_repo(repo: str, gthb: Github, disable: list, cache: bool) -> RepoRepor
         old_commits(report)
 
     # Delete temporary directory for a remote repo if it shall not be cached
-    if not cache:
+    if not cache and not local:
         logging.info("Deleting temporary directory in which remote repository has been cloned to")
         repodir_object.cleanup()
 
@@ -245,7 +261,7 @@ def main() -> None:
     report_list = []
     for repo in repos:
         # Search for indicators in the repository
-        report = check_repo(repo, gthb, args.disable, args.cache)
+        report = check_repo(repo, gthb, args.disable, args.cache, args.local)
         # Analyse and evaluate the findings
         analyse_report(report, args.ignore)
         # Add full report to report list

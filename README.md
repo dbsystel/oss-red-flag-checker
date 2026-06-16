@@ -19,6 +19,7 @@ This projects evaluates remote repositories by looking for typical red flags lik
 ## Table of contents
 
 * [Features](#features)
+* [How it works](#how-it-works)
 * [Installation](#installation)
 * [Usage](#usage)
 * [Caveats](#caveats)
@@ -64,6 +65,48 @@ Green flags:
 * The project has an acceptable contribition distribution by multiple active developers
 * The last human commit is less than 90 days old
 
+
+## How it works
+
+### Repository access
+
+For each repository, the tool needs access to both the file contents and the GitHub API. There are three modes:
+
+**Default (remote clone):** The repository is cloned into a temporary directory, used for checks, then deleted.
+
+```sh
+ossrfc -r https://github.com/owner/repo
+```
+
+**Cache:** The clone is kept in a local cache directory so subsequent runs skip re-cloning.
+
+```sh
+ossrfc -r https://github.com/owner/repo --cache
+```
+
+**Local path (`--local`):** Use an existing local clone. The repository URL is still required for GitHub API checks, but no cloning occurs. Useful when you already have the repo checked out, or want to avoid a second clone when integrating ossrfc into a larger workflow.
+
+```sh
+ossrfc -r https://github.com/owner/repo --local /path/to/local/clone
+```
+
+> [!NOTE]
+> The `--local` path should be a full (non-shallow) clone. A shallow clone will produce inaccurate contributor and commit-age statistics since git history is incomplete.
+>
+> When ossrfc clones the repository itself (default and cache modes), it uses a depth of 100 commits. This is sufficient for most activity checks but means contributor dominance and commit-age statistics only reflect the most recent 100 commits. Use `--local` with a full clone if complete history matters.
+
+### Checks and their data sources
+
+| Check | Data source | GitHub-only |
+|---|---|---|
+| CLA/DCO in files | Local clone (README, CONTRIBUTING) | No |
+| CLA/DCO in pull requests | GitHub API | Yes |
+| inbound=outbound in files | Local clone (README, CONTRIBUTING) | No |
+| LICENSE/COPYING file exists | Local clone | No |
+| Contributor dominance | GitHub API (contributor stats, bot detection) | Yes |
+| Commit age (human vs. bot) | Local clone (git history, bot detection) | No |
+
+Checks marked "GitHub-only" are skipped automatically for non-GitHub repositories.
 
 ## Installation
 
