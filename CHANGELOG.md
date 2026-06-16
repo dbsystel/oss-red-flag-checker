@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/dbsystel/oss-red-flag-checker/compare/v0.1.11...v0.2.0) (2026-06-16)
+
+
+### 🚀 New Features
+
+* add `--local` flag to use existing local clone ([#75](https://github.com/dbsystel/oss-red-flag-checker/issues/75)) ([c2d858d](https://github.com/dbsystel/oss-red-flag-checker/commit/c2d858dbe72360f8bcbb94d630440cff7081c1d9))
+
 ## [0.1.11](https://github.com/dbsystel/oss-red-flag-checker/compare/v0.1.10...v0.1.11) (2026-06-08)
 
 
