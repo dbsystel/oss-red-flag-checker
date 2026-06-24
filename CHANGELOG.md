@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.1](https://github.com/dbsystel/oss-red-flag-checker/compare/v0.2.0...v0.2.1) (2026-06-22)
+
+
+### ⚙️ Chores
+
+* **deps:** lock file maintenance ([#78](https://github.com/dbsystel/oss-red-flag-checker/issues/78)) ([64055df](https://github.com/dbsystel/oss-red-flag-checker/commit/64055dfd927a49a9e64be5a5bb8a44363cf9bd63))
+* **deps:** update github actions group to v7 ([#77](https://github.com/dbsystel/oss-red-flag-checker/issues/77)) ([5f34905](https://github.com/dbsystel/oss-red-flag-checker/commit/5f349053252b59ba36d68c43575dc986ad1d6aca))
+
 ## [0.2.0](https://github.com/dbsystel/oss-red-flag-checker/compare/v0.1.11...v0.2.0) (2026-06-16)
 
 
