@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.2](https://github.com/dbsystel/oss-red-flag-checker/compare/v0.2.1...v0.2.2) (2026-06-27)
+
+
+### ⚙️ Chores
+
+* **deps:** update actions/setup-python action to v6.3.0 ([#82](https://github.com/dbsystel/oss-red-flag-checker/issues/82)) ([e9b15d7](https://github.com/dbsystel/oss-red-flag-checker/commit/e9b15d790dc6f99aa948d740b071e4db7a79da4b))
+* **deps:** update github actions group ([#80](https://github.com/dbsystel/oss-red-flag-checker/issues/80)) ([90f1afb](https://github.com/dbsystel/oss-red-flag-checker/commit/90f1afb2d03e1c27ee74f66df482393351f10ced))
+
 ## [0.2.1](https://github.com/dbsystel/oss-red-flag-checker/compare/v0.2.0...v0.2.1) (2026-06-22)
 
 
