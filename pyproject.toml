@@ -10,6 +10,7 @@ authors = [{ name = "Open Source at Deutsche Bahn", email = "opensource@deutsche
 requires-python = ">=3.10,<4"
 readme = "README.md"
 license = "Apache-2.0"
+license-files = ["LICENSE", "LICENSES/*"]
 maintainers = [{ name = "Max Mehl", email = "max.mehl@deutschebahn.com" }]
 keywords = [
     "ospo",
@@ -35,7 +36,8 @@ dependencies = [
 ]
 
 [project.urls]
-Repository = "https://github.com/dbsystel/oss-red-flag-checker/"
+Repository = "https://github.com/dbsystel/oss-red-flag-checker"
+Changelog = "https://github.com/dbsystel/oss-red-flag-checker/blob/main/CHANGELOG.md"
 
 [project.scripts]
 ossrfc = "ossrfc.checker:main"
