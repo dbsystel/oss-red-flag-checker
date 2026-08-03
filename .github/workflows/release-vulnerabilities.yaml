@@ -17,4 +17,4 @@ jobs:
     runs-on: ubuntu-latest
     if: github.repository == 'dbsystel/oss-red-flag-checker'
     steps:
-      - uses: mxmehl/latest-release-vulnerability-status@ae71b45db2a04097be8743ec616b518147057933 # v1.2.4
+      - uses: mxmehl/latest-release-vulnerability-status@cbed5babdd804ef28567bcddf51e0a238be73c8b # v1.3.0
