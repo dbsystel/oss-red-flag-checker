@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.2.3](https://github.com/dbsystel/oss-red-flag-checker/compare/v0.2.2...v0.2.3) (2026-08-10)
+
+
+### ⚙️ Chores
+
+* **deps:** lock file maintenance ([#101](https://github.com/dbsystel/oss-red-flag-checker/issues/101)) ([8b4869b](https://github.com/dbsystel/oss-red-flag-checker/commit/8b4869bbafcb7e24b54865460866c5e77c5d8da1))
+* **deps:** lock file maintenance ([#105](https://github.com/dbsystel/oss-red-flag-checker/issues/105)) ([f72667e](https://github.com/dbsystel/oss-red-flag-checker/commit/f72667e8aefc4d91fdcbf27c334924788b64704e))
+* **deps:** update dependency gitpython to v3.1.58 [security] ([#104](https://github.com/dbsystel/oss-red-flag-checker/issues/104)) ([1917870](https://github.com/dbsystel/oss-red-flag-checker/commit/1917870190a7813b55f4e297f55d1258958d6095))
+* **deps:** update dependency uv_build to &gt;=0.12.0,&lt;0.13.0 ([#98](https://github.com/dbsystel/oss-red-flag-checker/issues/98)) ([fcb275b](https://github.com/dbsystel/oss-red-flag-checker/commit/fcb275bf0796716c75504efadfeec09972a4d15e))
+* **deps:** update mxmehl/latest-release-vulnerability-status action to v1.3.0 ([#102](https://github.com/dbsystel/oss-red-flag-checker/issues/102)) ([18639af](https://github.com/dbsystel/oss-red-flag-checker/commit/18639afb742b17dc2d0f6b0dc419967560e5d33f))
+* **deps:** update pypa/gh-action-pypi-publish action to v1.14.2 ([#100](https://github.com/dbsystel/oss-red-flag-checker/issues/100)) ([91215c6](https://github.com/dbsystel/oss-red-flag-checker/commit/91215c67563e712b1a9b809c88474471c168e9bd))
+* **deps:** update zizmorcore/zizmor-action action to v0.6.2 ([#103](https://github.com/dbsystel/oss-red-flag-checker/issues/103)) ([4f09dc6](https://github.com/dbsystel/oss-red-flag-checker/commit/4f09dc6744b56588294fe4eeadcf117c8b19f6a7))
+
 ## [0.2.2](https://github.com/dbsystel/oss-red-flag-checker/compare/v0.2.1...v0.2.2) (2026-07-28)
 
 
