@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.2.4](https://github.com/dbsystel/oss-red-flag-checker/compare/v0.2.3...v0.2.4) (2026-09-03)
+
+
+### ⚙️ Chores
+
+* **deps:** lock file maintenance ([#107](https://github.com/dbsystel/oss-red-flag-checker/issues/107)) ([f0a5768](https://github.com/dbsystel/oss-red-flag-checker/commit/f0a5768462a60bb01a93aec37b3c1d918dd58f92))
+* **deps:** lock file maintenance ([#109](https://github.com/dbsystel/oss-red-flag-checker/issues/109)) ([fad1f8c](https://github.com/dbsystel/oss-red-flag-checker/commit/fad1f8c8b844bf28c79c75ddd40f0a37772891b4))
+* **deps:** lock file maintenance ([#110](https://github.com/dbsystel/oss-red-flag-checker/issues/110)) ([7e2b77f](https://github.com/dbsystel/oss-red-flag-checker/commit/7e2b77fbc149eaa55a617baf517cfa0545574234))
+* **deps:** update astral-sh/setup-uv action to v10 ([#106](https://github.com/dbsystel/oss-red-flag-checker/issues/106)) ([bfabca3](https://github.com/dbsystel/oss-red-flag-checker/commit/bfabca34eadd1a1f90a22a98c458270b5105884b))
+* **deps:** update zizmorcore/zizmor-action action to v0.6.3 ([#111](https://github.com/dbsystel/oss-red-flag-checker/issues/111)) ([5f7ad60](https://github.com/dbsystel/oss-red-flag-checker/commit/5f7ad60b7c23ddbd58a8f4d74083fcb3745775b0))
+
 ## [0.2.3](https://github.com/dbsystel/oss-red-flag-checker/compare/v0.2.2...v0.2.3) (2026-08-10)
 
 
