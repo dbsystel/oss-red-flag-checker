@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.5](https://github.com/dbsystel/oss-red-flag-checker/compare/v0.2.4...v0.2.5) (2026-09-12)
+
+
+### ⚙️ Chores
+
+* **deps:** update zizmorcore/zizmor-action action to v0.6.4 ([#113](https://github.com/dbsystel/oss-red-flag-checker/issues/113)) ([70d48f0](https://github.com/dbsystel/oss-red-flag-checker/commit/70d48f0068a4b0521519b24a1084e934e83dbcf5))
+
 ## [0.2.4](https://github.com/dbsystel/oss-red-flag-checker/compare/v0.2.3...v0.2.4) (2026-09-07)
 
 
