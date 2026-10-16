@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.2.6](https://github.com/dbsystel/oss-red-flag-checker/compare/v0.2.5...v0.2.6) (2026-10-16)
+
+
+### ⚙️ Chores
+
+* **deps:** lock file maintenance ([#122](https://github.com/dbsystel/oss-red-flag-checker/issues/122)) ([b02c6e0](https://github.com/dbsystel/oss-red-flag-checker/commit/b02c6e05b5b0a67a196790e44aa8c38969b5813a))
+* **deps:** update actions/create-github-app-token action to v3.3.0 ([#127](https://github.com/dbsystel/oss-red-flag-checker/issues/127)) ([6a5c4cd](https://github.com/dbsystel/oss-red-flag-checker/commit/6a5c4cd581e2b0641030b899221f7557adb7bf89))
+* **deps:** update astral-sh/setup-uv action to v10.3.0 ([#124](https://github.com/dbsystel/oss-red-flag-checker/issues/124)) ([8f09b60](https://github.com/dbsystel/oss-red-flag-checker/commit/8f09b605cf397c64f9f50880670c9f080761cd3f))
+* **deps:** update dependency python to 3.15 ([#126](https://github.com/dbsystel/oss-red-flag-checker/issues/126)) ([05ee3e1](https://github.com/dbsystel/oss-red-flag-checker/commit/05ee3e19dc163fb660aacbce8398770000125fd2))
+* **deps:** update dependency uv_build to &gt;=0.13.0,&lt;0.14.0 ([#125](https://github.com/dbsystel/oss-red-flag-checker/issues/125)) ([6af9235](https://github.com/dbsystel/oss-red-flag-checker/commit/6af92356569dd6ef77d1b952d32355c577fdf87c))
+
 ## [0.2.5](https://github.com/dbsystel/oss-red-flag-checker/compare/v0.2.4...v0.2.5) (2026-10-05)
 
 
