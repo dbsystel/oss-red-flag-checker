@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.2.6](https://github.com/dbsystel/oss-red-flag-checker/compare/v0.2.5...v0.2.6) (2026-10-26)
+
+
+### ⚙️ Chores
+
+* **deps:** lock file maintenance ([#122](https://github.com/dbsystel/oss-red-flag-checker/issues/122)) ([b02c6e0](https://github.com/dbsystel/oss-red-flag-checker/commit/b02c6e05b5b0a67a196790e44aa8c38969b5813a))
+* **deps:** lock file maintenance ([#130](https://github.com/dbsystel/oss-red-flag-checker/issues/130)) ([2ae2599](https://github.com/dbsystel/oss-red-flag-checker/commit/2ae2599306f98e2519b1969e57c13da639836906))
+* **deps:** lock file maintenance ([#134](https://github.com/dbsystel/oss-red-flag-checker/issues/134)) ([ae17391](https://github.com/dbsystel/oss-red-flag-checker/commit/ae173914d08c81aeb67435dab57ef382a7a6fe4c))
+* **deps:** update actions/create-github-app-token action to v3.3.0 ([#127](https://github.com/dbsystel/oss-red-flag-checker/issues/127)) ([6a5c4cd](https://github.com/dbsystel/oss-red-flag-checker/commit/6a5c4cd581e2b0641030b899221f7557adb7bf89))
+* **deps:** update astral-sh/setup-uv action to v10.3.0 ([#124](https://github.com/dbsystel/oss-red-flag-checker/issues/124)) ([8f09b60](https://github.com/dbsystel/oss-red-flag-checker/commit/8f09b605cf397c64f9f50880670c9f080761cd3f))
+* **deps:** update astral-sh/setup-uv action to v10.3.1 ([#132](https://github.com/dbsystel/oss-red-flag-checker/issues/132)) ([9ce8e6d](https://github.com/dbsystel/oss-red-flag-checker/commit/9ce8e6dd8b6f191fb7a97e7d63956dc571792820))
+* **deps:** update dependency python to 3.15 ([#126](https://github.com/dbsystel/oss-red-flag-checker/issues/126)) ([05ee3e1](https://github.com/dbsystel/oss-red-flag-checker/commit/05ee3e19dc163fb660aacbce8398770000125fd2))
+* **deps:** update dependency uv_build to &gt;=0.13.0,&lt;0.14.0 ([#125](https://github.com/dbsystel/oss-red-flag-checker/issues/125)) ([6af9235](https://github.com/dbsystel/oss-red-flag-checker/commit/6af92356569dd6ef77d1b952d32355c577fdf87c))
+* **deps:** update github actions group ([#133](https://github.com/dbsystel/oss-red-flag-checker/issues/133)) ([3ebb92c](https://github.com/dbsystel/oss-red-flag-checker/commit/3ebb92cce9edd8f48977d3d5e9c585856a439af9))
+* **deps:** update pypa/gh-action-pypi-publish action to v1.14.3 ([#131](https://github.com/dbsystel/oss-red-flag-checker/issues/131)) ([76cd400](https://github.com/dbsystel/oss-red-flag-checker/commit/76cd400b1527a44aec45436f1b1d5b00eb6ff3e2))
+* **deps:** update zizmorcore/zizmor-action action to v0.7.0 ([#128](https://github.com/dbsystel/oss-red-flag-checker/issues/128)) ([2ea29ff](https://github.com/dbsystel/oss-red-flag-checker/commit/2ea29ffa9b4cb73584ee7014f11ab70ae16141c4))
+* **deps:** update zizmorcore/zizmor-action action to v0.7.1 ([#129](https://github.com/dbsystel/oss-red-flag-checker/issues/129)) ([64db26e](https://github.com/dbsystel/oss-red-flag-checker/commit/64db26e5e84f963397aed6e4955d8b23ccfd2f99))
+* **deps:** update zizmorcore/zizmor-action action to v0.8.0 ([#135](https://github.com/dbsystel/oss-red-flag-checker/issues/135)) ([414178b](https://github.com/dbsystel/oss-red-flag-checker/commit/414178bbaec7ad1410d34ed62e65772f301affe2))
+
 ## [0.2.5](https://github.com/dbsystel/oss-red-flag-checker/compare/v0.2.4...v0.2.5) (2026-10-05)
 
 
