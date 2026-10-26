@@ -102,6 +102,7 @@ def clone_or_pull_repository(repo_url: str, local_path: str) -> None:
                 repo_url,
                 local_path,
             )
+            return
         try:
             # fetch origin
             repo.remotes.origin.fetch()

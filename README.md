@@ -84,6 +84,9 @@ ossrfc -r https://github.com/owner/repo
 ossrfc -r https://github.com/owner/repo --cache
 ```
 
+A cached checkout with tracked local edits or a detached HEAD is left unchanged, and an error is logged.
+Resolve the checkout's state before refreshing it again.
+
 **Local path (`--local`):** Use an existing local clone. The repository URL is still required for GitHub API checks, but no cloning occurs. Useful when you already have the repo checked out, or want to avoid a second clone when integrating ossrfc into a larger workflow.
 
 ```sh
