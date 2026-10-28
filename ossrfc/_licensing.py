@@ -206,5 +206,5 @@ def licensefile(report: RepoReport) -> None:
     """Search for a LICENSE/COPYING file. Also includes LICENSES directory
     according to REUSE. If absent, it's a red flag.
     """
-    # Find CONTRIBUTING and README files or LICENSES directory
-    report.licensefiles = find_patterns_in_list([r"^(LICENSE|License|COPYING)"], *report.files_)
+    # Find license files or the REUSE LICENSES directory, regardless of case.
+    report.licensefiles = find_patterns_in_list([r"(?i)^(license|copying)"], *report.files_)
