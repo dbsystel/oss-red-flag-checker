@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.7](https://github.com/dbsystel/oss-red-flag-checker/compare/v0.2.6...v0.2.7) (2026-10-28)
+
+
+### 🔥 Bug Fixes
+
+* detect license filenames case-insensitively ([#136](https://github.com/dbsystel/oss-red-flag-checker/issues/136)) ([b0bd4af](https://github.com/dbsystel/oss-red-flag-checker/commit/b0bd4af422c59dda051d5bf5e2c5db7a3bbf6178))
+* preserve dirty cached checkouts ([#137](https://github.com/dbsystel/oss-red-flag-checker/issues/137)) ([5373593](https://github.com/dbsystel/oss-red-flag-checker/commit/537359366e41816ed2cbf366520e6266a084ecac))
+
 ## [0.2.6](https://github.com/dbsystel/oss-red-flag-checker/compare/v0.2.5...v0.2.6) (2026-10-26)
 
 
