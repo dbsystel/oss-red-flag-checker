@@ -5,7 +5,7 @@
 """Check a repo for different stats about contributions."""
 
 import logging
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from typing import TYPE_CHECKING
 
 from git import Repo
@@ -107,7 +107,7 @@ def _extract_all_commits(directory: str) -> list:
         {
             "name": str(c.author),
             "email": c.author.email,
-            "date": datetime.fromtimestamp(c.authored_date, tz=timezone.utc).date(),
+            "date": datetime.fromtimestamp(c.authored_date, tz=UTC).date(),
             "hash": c.hexsha,
         }
         for c in commits
@@ -123,7 +123,7 @@ def _commit_date_diff(commits: list) -> int:
     # compare days difference between today and the last commit date
     newest_commit_date, newest_commit_author = commits[0]["date"], commits[0]["name"]
     logging.debug("Newest detected commit on %s by %s", newest_commit_date, newest_commit_author)
-    return (datetime.now(tz=timezone.utc).date() - newest_commit_date).days
+    return (datetime.now(tz=UTC).date() - newest_commit_date).days
 
 
 def old_commits(report: RepoReport) -> None:
