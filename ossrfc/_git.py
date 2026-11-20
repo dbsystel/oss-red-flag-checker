@@ -9,7 +9,7 @@ import logging
 import os
 import re
 import sys
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from shutil import rmtree
 from time import sleep
@@ -206,7 +206,7 @@ def _gh_handle_ratelimit(gthb: Github, error_msg: Exception) -> None:
 
     # Sleep 5 seconds longer than API limit
     waituntil = rate.reset + timedelta(seconds=5)
-    waitseconds = int((waituntil - datetime.now(tz=timezone.utc)).total_seconds())
+    waitseconds = int((waituntil - datetime.now(tz=UTC)).total_seconds())
 
     logging.warning("Waiting %s seconds for end of API limit time", waitseconds)
 
@@ -229,7 +229,7 @@ def gh_api_call(
             api_result = getattr(ghobject, method)(**kwargs)
             # Apply reversed order if requested
             result = api_result.reversed if reverse else api_result
-        except RateLimitExceededException as exc:  # noqa: PERF203
+        except RateLimitExceededException as exc:
             _gh_handle_ratelimit(gthb, exc)
 
     return result
